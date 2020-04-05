@@ -1,9 +1,10 @@
 const express = require('express');
-const app = express();
+const passport = require('passport');
+const GoogleStrgedy = require('passport-google-oauth20').Strategy;
 
-app.get('/', (req, res) => {
-    res.send({ 'hi' : 'there, atara'});
-});
+const app = express();
+passport.use(new GoogleStrgedy());
 
 const PORT = process.env.PORT || 5000 //so that heroku can pass port dynamically. default port : 5000
 app.listen(PORT);
+
