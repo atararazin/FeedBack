@@ -29,7 +29,7 @@ passport.use(new GoogleStrgedy(
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
         callbackURL: '/auth/google/callback',//our return path from google
-        proxy: true
+        //proxy: true
     }, (accessToken, refreshToken, profile, done) =>
         {
             console.log("---connected to server---");
