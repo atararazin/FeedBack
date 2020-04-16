@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import {connect} from 'react-redux';
+import * as actions from '../actions';
 
-
-const Header = () => <h2> Header </h2>
+import Header from './Header';
 const DashBoard = () => <h2> dashboard </h2>
 const SurveyNew = () => <h2> Surveynew </h2>
 const Landing = () => <h2> landing </h2>
 
+class App extends Component{
+    componentDidMount(){
+        this.props.fetchUser();
+    }
 
-const App = () => {
-    return(
-        <div>
+    render(){
+        return(
+            <div className = "container">
             <BrowserRouter>
                 <div>
                     <Header/>
@@ -20,7 +25,8 @@ const App = () => {
                 </div>
             </BrowserRouter>
         </div>
-    );
+        );
+    }    
 };
 
-export default App;
+export default connect(null, actions)(App);
