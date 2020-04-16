@@ -30,18 +30,18 @@ passport.use(new GoogleStrgedy(
         clientSecret: keys.googleClientSecret,
         callbackURL: '/auth/google/callback',//our return path from google
         //proxy: true
-    }, (accessToken, refreshToken, profile, done) =>
+    }, 
+    async (accessToken, refreshToken, profile, done) =>
         {
             console.log("---connected to server---");
-            User.findOne({googleId: profile.id}).then((existingUser)=>{
-                if(existingUser){
+            const existingUser = await User.findOne({googleId: profile.id});
+            if(existingUser){
 
-                    done(null, existingUser);
-                }
-                else{
-                    new User({ googleId: profile.id }).save().then(user => done(null, user));//create new user
-                }
-            })
-        }
-)
+                done(null, existingUser);
+            }
+            else{
+                const user = await new User({ googleId: profile.id }).save();//create new user
+                done(null, user);
+            }
+        })
 );
