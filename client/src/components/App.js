@@ -4,9 +4,10 @@ import {connect} from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
+import Landing from './Landing';
+
 const DashBoard = () => <h2> dashboard </h2>
 const SurveyNew = () => <h2> Surveynew </h2>
-const Landing = () => <h2> landing </h2>
 
 class App extends Component{
     componentDidMount(){
