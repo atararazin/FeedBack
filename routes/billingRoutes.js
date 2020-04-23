@@ -2,10 +2,10 @@ const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
 const requireLogin = require('../middlewares/requireLogin');
 
+
 module.exports = (app) =>{
-       
     //route handler for stripe payments
-    app.post('/api/payments', requireLogin ,async (req,res) => {
+    app.post('/api/payments', requireLogin, async (req,res) => {
         const charge = await stripe.charges.create({
             amount: 500,
             currency: 'usd',
