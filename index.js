@@ -35,7 +35,7 @@ if(process.env.NODE_ENV == 'production'){
     //if can't find a route get it the index.html file
     const path = require('path');
     app.get('*', (req, res) =>{
-        res.sendFile(path.resolve(__direname, 'client', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
 }
 
