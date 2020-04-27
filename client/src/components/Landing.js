@@ -7,7 +7,7 @@ const Landing = () => {
             
                 Easily collect feedback from your users!
             
-    <img src={background}/>
+    <img src={background} alt=""/>
         </div>
     );
 };

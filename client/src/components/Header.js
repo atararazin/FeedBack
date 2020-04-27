@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { STATES } from 'mongoose';
+//import { STATES } from 'mongoose';
 import {Link} from 'react-router-dom';
 import Payments from './Payments';
 
@@ -38,7 +38,7 @@ class Header extends Component{
                 <div className="nav-wrapper">
                     <Link to={this.props.auth ? '/surveys' : '/'} 
                         className="left brand-logo">
-                        Emaily
+                        FeedBack
                     </Link>
                     <ul className="right">
                         {this.renderContent()}
