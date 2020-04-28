@@ -4,11 +4,11 @@ const Survey = mongoose.model('surveys');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
-const template = require('../services/emailTemplates/surveyTemplate');
+const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 module.exports = (app) => {  
     //route handler for creating a new survey
-    app.post('/api/survey', requireLogin, requireCredits, (req,res) => {
+    app.post('/api/survey', requireLogin, requireCredits, async (req,res) => {
         const {title, subject, body, recipients } = req.body;
         
         const survey = new Survey({
@@ -25,7 +25,25 @@ module.exports = (app) => {
         })
 
         //send an email
-        const mailer = new Mailer(survey, template(survey));
-        mailer.send();
+        const mailer = new Mailer(survey, surveyTemplate(survey));
+        try{
+            await mailer.send();
+            await survey.save();//save to database
+            req.user.credits -= 1
+            const user = await req.user.save();
+            res.send(user); //send to the frontend
+        } catch(err){
+            res.status(422);
+        }
+        
     });
+
+    app.get('/api/survey/thanks', (req,res) => 
+        {
+            res.send("Thanks for giving your feedback!");
+        }
+    )
+
+
+
 };
