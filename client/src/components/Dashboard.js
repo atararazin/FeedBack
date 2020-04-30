@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-        <div>
+        <div class="container">
             Dashboard
-                <div class="fixed-action-btn">
+                <div class="fixed-action-btn container">
                      <Link to="/surveys/new" class="btn-floating btn-large red">
                         <i class="large material-icons">add</i>
                     </Link>
