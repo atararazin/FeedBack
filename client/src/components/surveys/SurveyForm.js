@@ -46,9 +46,9 @@ class SurveyForm extends Component{
 //make sure input is valid
 function validate(values) {
     const errors = {};
-    console.log(values.email)
+   
     //checks that emails are valid
-    errors.emails = validateEmails(values.email || '');
+    errors.recipients = validateEmails(values.recipients || '');
    
     //check to make sure there is a value
     _.each(FIELDS, ({ name, noValueError }) => {
@@ -59,6 +59,7 @@ function validate(values) {
 
     return errors;
 }
+  
 
 export default reduxForm({
     validate,
