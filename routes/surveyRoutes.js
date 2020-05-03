@@ -8,7 +8,7 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 module.exports = (app) => {  
     //route handler for creating a new survey
-    app.post('/api/survey', requireLogin, requireCredits, async (req,res) => {
+    app.post('/api/surveys', requireLogin, requireCredits, async (req,res) => {
         const {title, subject, body, recipients } = req.body;
         
         const survey = new Survey({
@@ -38,7 +38,7 @@ module.exports = (app) => {
         
     });
 
-    app.get('/api/survey/thanks', (req,res) => 
+    app.get('/api/surveys/thanks', (req,res) => 
         {
             res.send("Thanks for giving your feedback!");
         }
