@@ -3,3 +3,10 @@ add login with facebook
 check that the user has the right amount of credits and not just that they have some
 make the form be in two pages with a next
 add an alert before submitting
+
+courses ideas:
+pie chart/bar chart of yes/no
+add last responded 
+allow users to delete surveys that have been created
+allow user to specify the from email address
+allow client sorting - newest/oldest/most votes
