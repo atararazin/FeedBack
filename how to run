@@ -1,0 +1,1 @@
+In order to change the dir into the server cd.. npm run dev For the webhook to work (using ngrok): npx ngrok http 5000 then you'll see "fowarding" and an address. put that URL into sendgrid + 'api/surveys/webhooks' in prod change it to the name of the app on heroku + 'api/surveys/webhooks'
