@@ -31,9 +31,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, ConfirmWindow, o
             <button className="teal btn-flat left white-text" onClick={ onCancel } >
                     Back
             </button>
-            <button onClick={ onConfirm }>
-                button
-            </button>
+            
         </div>
     );
 }
